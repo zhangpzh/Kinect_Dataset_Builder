@@ -1,0 +1,35 @@
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\FroggyNect.exe.config
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\FroggyNect.exe
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\FroggyNect.pdb
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\Microsoft.Kinect.dll
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\Microsoft.Expression.Drawing.dll
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\Microsoft.Kinect.xml
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\bin\Debug\Microsoft.Expression.Drawing.xml
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect.csprojResolveAssemblyReference.cache
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\MainWindow.baml
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\MainWindow.g.cs
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\App.g.cs
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect_MarkupCompile.cache
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect.g.resources
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect.Properties.Resources.resources
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect.csproj.GenerateResource.Cache
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect.exe
+c:\users\peizhenzhang\documents\visual studio 2013\Projects\FroggyNect\FroggyNect\obj\Debug\FroggyNect.pdb
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\FroggyNect.exe.config
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect.exe
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect.pdb
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\FroggyNect.exe
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\FroggyNect.pdb
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\Microsoft.Kinect.dll
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\Microsoft.Kinect.xml
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\Microsoft.Expression.Drawing.xml
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect.csprojResolveAssemblyReference.cache
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\MainWindow.baml
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\MainWindow.g.cs
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\App.g.cs
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect_MarkupCompile.cache
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect.g.resources
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect.Properties.Resources.resources
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\obj\Debug\FroggyNect.csproj.GenerateResource.Cache
+C:\Users\PEIZHENZHANG\Desktop\backup\24\FroggyNect\FroggyNect\bin\Debug\FroggyNect.XML

@@ -1,0 +1,49 @@
+﻿<Window x:Class="FroggyNect.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FroggyNect" Height="635.366" Width="1106.098">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Margin="0,0,-8,-21">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="56*"/>
+        </Grid.ColumnDefinitions>
+        <Border Name="colorImageBoder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="249" Margin="83,84,0,0" VerticalAlignment="Top" Width="443" Grid.Column="1"/>
+        <Border Name="depthImageBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="249" Margin="20,84,0,0" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <Border Name="skeletonImageBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="249" Margin="537,84,0,0" VerticalAlignment="Top" Width="300" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Label Content="COLOR (LIVE)" HorizontalAlignment="Left" Margin="261,349,0,0" VerticalAlignment="Top" Width="99" Height="25" Grid.Column="1"/>
+        <Label Content="DEPTH (LIVE)" Margin="112,349,25,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="SKELETON (LIVE)" HorizontalAlignment="Left" Margin="645,349,0,0" VerticalAlignment="Top" Width="110" Grid.Column="1" Height="25" Grid.ColumnSpan="3"/>
+        <Image Name="colorImage" HorizontalAlignment="Left" Height="249" Margin="83,84,0,0" VerticalAlignment="Top" Width="443" Grid.Column="1"/>
+        <Image Name="depthImage" HorizontalAlignment="Left" Height="249" Margin="20,84,0,0" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <Image Name="skeletonImage" HorizontalAlignment="Left" Height="249" Margin="537,84,0,0" VerticalAlignment="Top" Width="300" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="videoText" HorizontalAlignment="Left" Height="30" Margin="537,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TextAlignment="center" FontSize="14" RenderTransformOrigin="-2.871,0.594" Text="1" Padding="4" Grid.Column="1" IsEnabled="False" />
+        <Button Name="incrementVideoBtn" Content="+" HorizontalAlignment="Left" Height="16" Margin="647,453,0,0" VerticalAlignment="Top" Width="20" Padding="-5" FontSize="18" Grid.Column="1" RenderTransformOrigin="1.55,0.5" Click="incrementVideoBtn_Click" IsEnabled="False"/>
+        <Button Name="decrementVideoBtn" Content="-" HorizontalAlignment="Left" Height="16" Margin="647,467,0,0" VerticalAlignment="Top" Width="20" Padding="-10" FontSize="22" Grid.Column="1" Click="decrementVideoBtn_Click" IsEnabled="False"/>
+        <Button Name="createButton" Content="Create Dataset" Margin="63,420,32,0" VerticalAlignment="Top" Height="32" FontSize="14" Click="createButton_Click"/>
+        <Button Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="2,420,0,0" VerticalAlignment="Top" Width="83" Height="32" FontSize="14" Grid.Column="1" IsEnabled="False" Click="startButton_Click"/>
+        <Button Name="stopButton" Content="Stop" HorizontalAlignment="Left" Margin="2,483,0,0" VerticalAlignment="Top" Width="83" Height="32" FontSize="14" Grid.Column="1" IsEnabled="False" Click="stopButton_Click"/>
+        <Label Content="video" HorizontalAlignment="Left" Margin="490,454,0,0" VerticalAlignment="Top" Height="30" FontSize="14" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Foreground="#FF9C1A1A" Grid.Column="1" Width="47"/>
+        <Border Name="videoBorder" BorderBrush="Black" BorderThickness="1" Height="31" Margin="488,453,163,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.219" Grid.Column="1" Width="49"/>
+        <Label Content="DATASET ROOT :" HorizontalAlignment="Left" Margin="117,452,0,0" VerticalAlignment="Top" Height="32" Width="120" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Foreground="#FF9C1A1A" Padding="8" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Grid.Column="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="117,453,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Border Name="datasetRootBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="237,453,0,0" VerticalAlignment="Top" Width="251" Grid.Column="1"/>
+        <Label Content="FLOOR :" HorizontalAlignment="Left" Margin="117,420,0,0" VerticalAlignment="Top" Width="120" Height="32" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Foreground="#FF9C1A1A" Grid.Column="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="117,422,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Border Name="floorBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="237,422,0,0" VerticalAlignment="Top" Width="251" Grid.Column="1"/>
+        <Label Content="Written Fps" HorizontalAlignment="Left" Margin="488,422,0,0" VerticalAlignment="Top" Height="32" FontSize="14" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Foreground="#FF9C1A1A" Width="104" Grid.Column="1"/>
+        <Border Name="fpsBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="488,422,0,0" VerticalAlignment="Top" Width="104" RenderTransformOrigin="0.553,1.219" Grid.Column="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="592,422,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.553,1.219" Grid.Column="1"/>
+        <DockPanel Grid.Row="0" Margin="26,0,26,458" Grid.ColumnSpan="4">
+            <Image Name="mascot" Source="Resource/frog.jpg" HorizontalAlignment="Center" Margin="0,5,0,77" Width="42"></Image>
+        </DockPanel>
+        <TextBlock Name="fpsTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="592,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="75" FontSize="14" TextAlignment="Center" />
+        <TextBlock Name="floorTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="237,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="251"/>
+        <TextBlock Name="datasetRootTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="237,466,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="251" Height="17" RenderTransformOrigin="0.478,1.2" FontSize="11"/>
+        <Border Name="videoTextBoxBorder" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="537,454,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.4,1.645" IsEnabled="False"/>
+        <CheckBox Name="depthCheckBox"  Checked="depthCheckBox_Checked" Content="" HorizontalAlignment="Left" Margin="204,355,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <CheckBox Name="colorCheckBox"  Checked="colorCheckBox_Checked" Content="" HorizontalAlignment="Left" Margin="351,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.85,0.333" Grid.Column="1"/>
+        <CheckBox Name="skeletonCheckBox"  Checked="skeletonCheckBox_Checked" Content="" HorizontalAlignment="Left" Margin="55,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.85,0.333" Grid.Column="3"/>
+    </Grid>
+</Window>
