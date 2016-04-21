@@ -1,0 +1,3 @@
+view-peizhen:   2.88000001,                    columnCropped: 85~596 (resize 后的 color image 的index),   rowCropped: 26~ 399(depth image的index),        对齐后图的大小 -> 512 x 374
+view-yongyi:     2.8856393571727597,  columnCropped: 97 ~ 608 (resize 后的 color image的index),  rowCropped: 21 ~ 394(depth image的index) ,      对齐后图的大小 -> 512 x 374
+view-weihong: 2.882497801337617,    columnCropped: 71~582(...),                                                             rowCropped: 32~405(...),                                             对齐后图的大小 -> 512 x 374
