@@ -1,0 +1,25 @@
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\bin\Release\BoundingBoxer.exe.config
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\bin\Release\BoundingBoxer.exe
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\bin\Release\BoundingBoxer.pdb
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\MainWindow.baml
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\MainWindow.g.cs
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\App.g.cs
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer_MarkupCompile.cache
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.g.resources
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.Properties.Resources.resources
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.csproj.GenerateResource.Cache
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.exe
+C:\Users\PEIZHENZHANG\documents\visual studio 2013\Projects\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.pdb
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\bin\Release\BoundingBoxer.exe.config
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.exe
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.pdb
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.csprojResolveAssemblyReference.cache
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\MainWindow.baml
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\MainWindow.g.cs
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\App.g.cs
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer_MarkupCompile.cache
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.g.resources
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.Properties.Resources.resources
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\obj\Release\BoundingBoxer.csproj.GenerateResource.Cache
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\bin\Release\BoundingBoxer.exe
+C:\Users\PEIZHENZHANG\Documents\GitHub\BoundingBoxer\BoundingBoxer\bin\Release\BoundingBoxer.pdb

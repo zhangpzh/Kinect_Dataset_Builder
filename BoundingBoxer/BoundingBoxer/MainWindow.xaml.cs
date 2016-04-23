@@ -27,27 +27,30 @@ namespace BoundingBoxer
         private static List<String> m_imageFiles = null;
 
         /// <summary>
-        /// people 子文件夹下 person_xx.txt 的路径, (每个txt用来记录每个人每次出现时对应的帧号和框)
+        /// 记录本Video的标框进度的文本文件路径
         /// </summary>
-        private static List<String> m_peopleTxtFiles = null;
-
-        /// <summary>
-        /// people 子文件夹的路径
-        /// </summary>
-        private static String m_peopleSubDirectPath = String.Empty;
-        /// <summary>
-        /// 本Video的校正进度相关
-        /// </summary>
-        private static String m_rectifyTxtPath = String.Empty;
+        private static String m_BoundingProcessTxtPth = String.Empty;
         
         /// <summary>
-        /// image路径名中, image帧号出现的第一个index, 比如 'xxx/001.jpg', 则 该值为 4 (这个值对于一个 video 中的 image 而言都是一样的)
+        /// image路径名中, image帧号出现的第一个index, 比如 'xxx/001.jpg', 则 该值为 4 -> 即字符串中第一个'0'的index (这个值对于一个 video 中的 image 而言都是一样的)
         /// </summary>
         private static int m_imageNumberBeginIndex;
+
         /// <summary>
-        /// Video的bounding boxes 文件路径
+        /// 存储video的bounding boxes 的文本文件 "BBoxes.txt" 的绝对路径
         /// </summary>
-        private static String m_boundingBoxesTxtPath = String.Empty;
+        private static String m_BoundingBoxesTxtPath = String.Empty;
+
+        /// <summary>
+        /// 用于记录本次 Video 已经标了多远, 这决定了关闭程序, 再打开程序时要工作的图片的第一张图片
+        /// </summary>
+        private static int m_indexReachedSoFar;
+
+        /// <summary>
+        /// 用于记录本次打开程序, 工作的第一张图片, 到了这张图片, previous 按钮就不能跳转到之前图片了.
+        /// </summary>
+        private static int m_firstIndexWorkThisTime;
+
         /// <summary>
         /// image 帧号 (string)
         /// </summary>
@@ -57,9 +60,9 @@ namespace BoundingBoxer
         /// </summary>
         private static int m_imageNumberInIndex;
         /// <summary>
-        /// image 总数
+        /// 当前 video 中的 color 文件夹中的 image 总数
         /// </summary>
-        private static int m_imageCount;
+        private static int m_totalImgCnt;
         /// <summary>
         /// Store all bounding boxes of current video
         /// </summary>
@@ -79,15 +82,7 @@ namespace BoundingBoxer
         /// 画布
         /// </summary>
         private static ImageBrush m_canvasBrush = new ImageBrush();
-        /// <summary>
-        /// 展示比, 实际图像的大小是 1920x1080, 而此中 Canvas 的大小是 640x360
-        /// </summary>
-        private const double m_actualToDisplayRate = 360.0 / 1080;
 
-        /// <summary>
-        /// 是否仅确定了矩形的 topLeft 点
-        /// </summary>
-        private static bool m_isFirstCornerOfRectConfirm = false;
         /// <summary>
         /// total id count
         /// </summary>
@@ -95,37 +90,51 @@ namespace BoundingBoxer
         /// <summary>
         /// 人物 id
         /// </summary>
-        private static bool[] m_idPool = new bool[m_totalIdCnt];        //默认只提供1-10个id
-        /// <summary>
-        /// 当前的矩形的 id (用户输入)
-        /// </summary>
-        private static int m_currentSelectedId;
+        private static bool[] m_idPool = new bool[m_totalIdCnt + 1];        //默认只提供1-10个id
 
         /// <summary>
-        /// 矩形的 topLeft 点 和 bottomRight 点
+        /// 存储 id 到人名的映射
         /// </summary>
-        private static Point m_pre_pt;
-        private static Point m_nxt_pt;
-
+        private static Dictionary<int, String> m_idToName = null;
 
         public MainWindow()
         {
             InitializeComponent();
-
+            InitializeIdToNameDict();
         }
+
         /// <summary>
-        /// Initialize m_AllBoxesInVideo with all information in BoundingBoxes.txt 
+        /// 初始化 id 到人名的映射
         /// </summary>
-        private void Initm_AllBoxesInVideo()
+        private void InitializeIdToNameDict()
+        {
+            m_idToName = new Dictionary<int, string>();
+            m_idToName.Add(1,"伟宏");
+            m_idToName.Add(2,"东程");
+            m_idToName.Add(3,"宏伟");
+            m_idToName.Add(4,"杰超");
+            m_idToName.Add(5,"瑾洁");
+            m_idToName.Add(6,"卢曦");
+            m_idToName.Add(7,"培圳");
+            m_idToName.Add(8,"尚轩");
+            m_idToName.Add(9,"亚芳");
+            m_idToName.Add(10,"永毅");
+        }
+        
+        /// <summary>
+        /// 用 BBoxes.txt 初始化内存中的 m_AllBoxesInVideo
+        /// </summary>
+        /// <param name="boundingBoxesPath">BBoxes.txt 文件的路径</param>
+        private void Initm_AllBoxesInVideo(String boundingBoxesPath)
         {
             //为每一帧申请一个 bounding boxes 列表
             m_AllBoxesInVideo = new List<List<BoundingBox>>();
-            for (int i = 0; i < m_imageCount; ++i)
+            for (int i = 0; i < m_totalImgCnt; ++i)
             {
                 m_AllBoxesInVideo.Add(new List<BoundingBox>());
             }
 
-            using (StreamReader boxesReader = new StreamReader(m_boundingBoxesTxtPath, Encoding.UTF8))
+            using (StreamReader boxesReader = new StreamReader(boundingBoxesPath, Encoding.UTF8))
             {
                 int frameNumber;
                 int person_id;
@@ -134,33 +143,29 @@ namespace BoundingBoxer
                 while ((line = boxesReader.ReadLine()) != null)
                 {
                     //Get information within a record
-                    line = line.Replace('(', '\t');
-                    line = line.Replace(')', '\t');
-                    String[] entries = line.Split(',');
-                    int.TryParse(entries[0].Substring(entries[0].LastIndexOf(':') + 1), out frameNumber);
-                    int.TryParse(entries[1].Substring(entries[1].LastIndexOf(':') + 1), out person_id);
-                    double.TryParse(entries[2].Substring(entries[2].LastIndexOf(':') + 1), out topLeftPointX);
+                    String[] entries = line.Split(' ');
+                    int.TryParse(entries[0], out frameNumber);
+                    int.TryParse(entries[1], out person_id);
+                    double.TryParse(entries[2], out topLeftPointX);
                     double.TryParse(entries[3], out topLeftPointY);
-                    double.TryParse(entries[4].Substring(entries[4].LastIndexOf(':') + 1), out width);
-                    double.TryParse(entries[5].Substring(entries[5].LastIndexOf(':') + 1), out height);
+                    double.TryParse(entries[4], out width);
+                    double.TryParse(entries[5], out height);
 
-                    //正确的border 宽高要乘以 1080/432.0, 缩放到本canvas的比例是原图的 1/3, 因此本canvas中显示的 border 宽高是 txt 数据中的 360/432.0, 这是标框程序的一个问题遗留 !!!
-                    width *= (360 / 432.0);
-                    height *= (360 / 432.0);
                     //Add bounding boxes into m_AllBoxesInVideo
                     m_AllBoxesInVideo[frameNumber - 1].Add(new BoundingBox(person_id,new Rec(new Point(topLeftPointX,topLeftPointY),width,height)));
                 }
             }
         }
+
         /// <summary>
-        /// Write rectification history into rectify_process.txt
+        /// Write rectification history into bounding_process.txt
         /// </summary>
         /// <param name="nextImageIndexToWorkWith">image index to work with next time</param>
         private void WriteRectifyHistory(int nextImageIndexToWorkWith)
         { 
-            using(StreamWriter rectifyProcessWriter = new StreamWriter(m_rectifyTxtPath,false,Encoding.UTF8))
+            using(StreamWriter boundingProcessWriter = new StreamWriter(m_BoundingProcessTxtPth,false,Encoding.UTF8))
             {
-                rectifyProcessWriter.WriteLine(nextImageIndexToWorkWith.ToString());
+                boundingProcessWriter.WriteLine(nextImageIndexToWorkWith.ToString());
             }
         }
 
@@ -183,72 +188,82 @@ namespace BoundingBoxer
                 m_imageFiles = new List<String>(System.IO.Directory.EnumerateFiles(colorImageFolderPath,"*.jpg"));
                 m_imageFiles.Sort();
 
-                m_peopleTxtFiles = new List<string>();
-                m_peopleSubDirectPath = System.IO.Path.Combine(videoPath, "people");
+                //获得 BBoxes 文本文件的路径
+                m_BoundingBoxesTxtPath = System.IO.Path.Combine(videoPath, "BBoxes.txt");
 
-                //确定好每个 person_xx.txt 文件的绝对路径
-                for (int i = 0; i < m_totalIdCnt; ++i)
-                {
-                    String txtName = String.Format("person_{0}.txt", (i + 1 < 10 ? "0" : "") + (i + 1).ToString());
-                    m_peopleTxtFiles.Add(System.IO.Path.Combine(m_peopleSubDirectPath,txtName));
-                }
-                m_peopleTxtFiles.Sort();
-                m_boundingBoxesTxtPath = System.IO.Path.Combine(videoPath, "BoundingBoxes.txt");
+
+                //开始工作的图片设为第一帧
                 m_imageNumberBeginIndex = m_imageFiles[0].LastIndexOf('\\')+1;
-                m_imageCount = m_imageFiles.Count();
+                //记录当前 video 的 color 文件夹中的 图片总数
+                m_totalImgCnt = m_imageFiles.Count();
 
-                //Initialize m_AllBoxesInVideo with all information in BoundingBoxes.txt
-                Initm_AllBoxesInVideo();
 
-                //若此 video 之前没有校正记录
-                m_rectifyTxtPath = System.IO.Path.Combine(videoPath, "rectify_process.txt");
-                if (!File.Exists(m_rectifyTxtPath))
+                //检查此 video 是否有标框记录
+                m_BoundingProcessTxtPth = System.IO.Path.Combine(videoPath, "bounding_process.txt");
+
+                if (!File.Exists(m_BoundingProcessTxtPth))
                 {
-                    m_imageNumberInIndex = 0;
-                    m_imageNumberInString = m_imageFiles[0].Substring(m_imageNumberBeginIndex, 5);
-                    //写入最初的校正记录
-                    WriteRectifyHistory(m_imageNumberInIndex);
-
-                    //为每个 id 在 people 子文件夹下创建 person_xx.txt 文件，以记录 第 xx 个人 每次出现对应的帧号和框 (初始只写入对应的id)
-                    //注意 ! 这里由于文件名的原因, id 最多为两位数 !
-                    Directory.CreateDirectory(m_peopleSubDirectPath);
-                    for(int i = 0 ; i < m_totalIdCnt; ++ i)
-                    { 
-                        using (StreamWriter peopleInformationWriter = new StreamWriter(m_peopleTxtFiles[i],true,Encoding.UTF8))
-                        {
-                            peopleInformationWriter.WriteLine((i+1).ToString());
+                    //生成空的 框文件 (BBoxes.txt) 和 标框记录文件 (bounding_process.txt)
+                    //File.Create(m_BoundingBoxesTxtPath);
+                    //File.Create(m_BoundingProcessTxtPth);
+                    using (System.IO.FileStream bboxesFs = File.Open(m_BoundingBoxesTxtPath,FileMode.Create))
+                    {
+                        using (System.IO.FileStream boundignProcessFs = File.Open(m_BoundingProcessTxtPth,FileMode.Create))
+                        { 
                         }
                     }
+
+                    //初始化 m_AllBoxesInVideo
+                    Initm_AllBoxesInVideo(m_BoundingBoxesTxtPath);
+
+                    //从第一帧开始工作
+                    m_imageNumberInIndex = m_indexReachedSoFar = m_firstIndexWorkThisTime = 0;
+                    m_imageNumberInString = m_imageFiles[0].Substring(m_imageNumberBeginIndex, 5);
                 }
                 else 
                 {
-                    //读取此前校正记录
-                    using (StreamReader rectifyProcessReader = new StreamReader(m_rectifyTxtPath, Encoding.UTF8))
+                    //初始化 m_AllBoxesInVideo
+                    Initm_AllBoxesInVideo(m_BoundingBoxesTxtPath);
+
+                    //读取此前标框进度
+                    using (StreamReader boundingProcessReader = new StreamReader(m_BoundingProcessTxtPth, Encoding.UTF8))
                     {
-                        String lastWorkIndex = rectifyProcessReader.ReadLine();
-                        int.TryParse(lastWorkIndex, out m_imageNumberInIndex);
-                        //如果显示 Video 已经检查完毕
-                        if (m_imageNumberInIndex == -1)
+                        String lastWorkIndex = boundingProcessReader.ReadLine();
+                        int.TryParse(lastWorkIndex, out m_indexReachedSoFar);
+                        //如果显示 Video 已经检查完毕 -> 进度值为 "-1"
+                        if (m_indexReachedSoFar == -1)
                         {
                             testBlock.Text = "This video has been rectified !";
                             BrowseButton.IsEnabled = false;
                             return;
                         }
+                        //设置工作进度
+                        m_imageNumberInIndex = m_firstIndexWorkThisTime = m_indexReachedSoFar;
                         m_imageNumberInString = m_imageFiles[m_imageNumberInIndex].Substring(m_imageNumberBeginIndex, 5);
                     }
                 }
-                //把本次开始处理的第一张图片的信息 (image、bounding boxes)显示在 Canvas 上
+                //把画布的大小设置得和图片一样
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new System.Uri(m_imageFiles[m_imageNumberInIndex]);
+                bitmapImage.EndInit();
+                displayingCanvas.Width = displayingCanvasBorder.Width = bitmapImage.PixelWidth;
+                displayingCanvas.Height = displayingCanvasBorder.Height = bitmapImage.PixelHeight;
+
+                //把开始工作的第一张帧的信息 (图像、bounding boxes)显示在画布上
                 WashDisplayingCanvas(m_imageNumberInIndex);
 
                 //将 video number 和 image number 显示在 文本框中
                 videoNumberBlock.Text = videoPath.Substring(videoPath.LastIndexOf('\\') + 1);
                 ImageNumberBlock.Text = m_imageNumberInString;
                 
-                //唤醒 next button, del button 和 app button, 催眠 browse button
-                saveAndNextButton.IsEnabled = true;
+                //唤醒 next, del 和 app button, 催眠 browse button, cancel button, previous button
+                nextButton.IsEnabled = true;
                 DeleteButton.IsEnabled = true;
                 AppendButton.IsEnabled = true;
                 BrowseButton.IsEnabled = false;
+                CancelButton.IsEnabled = false;
+                previousButton.IsEnabled = false;
             }
             else 
             {
@@ -293,8 +308,8 @@ namespace BoundingBoxer
                 border.BorderBrush = Brushes.Green;
                 border.BorderThickness = new Thickness(2);
 
-                double displayY = bboxes.rectangle.m_topLeftPoint.Y*m_actualToDisplayRate;
-                double displayX = bboxes.rectangle.m_topLeftPoint.X*m_actualToDisplayRate;
+                double displayY = bboxes.rectangle.m_topLeftPoint.Y;
+                double displayX = bboxes.rectangle.m_topLeftPoint.X;
 
                 Canvas.SetTop(border, displayY);
                 Canvas.SetLeft(border, displayX);
@@ -305,8 +320,8 @@ namespace BoundingBoxer
 
                 //Draw id text onto canvas
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = bboxes.m_personId.ToString();
-                textBlock.Foreground = new SolidColorBrush(Color.FromRgb(0,175,251));
+                textBlock.Text = bboxes.m_personId.ToString() + ". " + m_idToName[bboxes.m_personId];
+                textBlock.Foreground = Brushes.Red;
 
                 Canvas.SetTop(textBlock, displayY);
                 Canvas.SetLeft(textBlock, displayX + border.Width / 2.0);
@@ -328,101 +343,112 @@ namespace BoundingBoxer
             }
         }
 
-        /// <summary>
-        /// Next button click event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void saveAndNextButton_Click(object sender, RoutedEventArgs e)
+        private void nextButton_Click(object sender, RoutedEventArgs e)
         {
             //若本帧是倒数第二帧或最后一帧
-            if (m_imageNumberInIndex >= m_imageCount - 2)
+            if (m_imageNumberInIndex >= m_totalImgCnt - 2)
             {
-                //写下本帧的 m_AllBoxesInVideo[m_imageNumberInIndex] 中的信息写入person_xx.txt
-                WritingBboxesInPersonTxt(m_imageNumberInIndex);
+                //设置 next button 不可按
+                nextButton.IsEnabled = false;
 
-                //若本帧是倒数第二帧, 则把本帧 bboxes 情况,复制到下一帧, 并补上下一帧的帧号的 m_AllBoxesInVideo[...]中的信息
-                //其实不复制, 直接把本帧信息再写一次也行, 反正m_AllBoxesInVideo[m_imageNumberInIndex+1]中的信息再也不需要了
-                if (m_imageNumberInIndex == m_imageCount - 2)
-                {
-                    CopyBboxesToNextFrame(m_imageNumberInIndex);
-                    WritingBboxesInPersonTxt(m_imageNumberInIndex + 1);
-                }
-                //设置 button 不可按
-                saveAndNextButton.IsEnabled = false;
-                //通知用户标记结束
-                rectifyAccomplished();
+                m_indexReachedSoFar = -1;
+
+                //通知用户已经标过最后一帧, 此时仍然可以编辑不满意的一些帧(上一次关闭程序(如果是在本video的话)的后两帧到最后一帧), 但是关闭程序后将不能再编辑本 video 的任何帧
+                currentVideoIsFinishing();
             }
             else
             {
-                //把本帧 bboxes 情况,复制到下一帧, 再把本帧和下一帧的 AllBoxesInVieo[]中的信息写入 person_xx.txt
-                CopyBboxesToNextFrame(m_imageNumberInIndex);
-                WritingBboxesInPersonTxt(m_imageNumberInIndex);
-                WritingBboxesInPersonTxt(m_imageNumberInIndex + 1);
-
                 //增加 imageNumber (int 和 string)
                 m_imageNumberInIndex += 2;
                 m_imageNumberInString = m_imageFiles[m_imageNumberInIndex].Substring(m_imageNumberBeginIndex, 5);
 
+                //更新维护 m_indexReachedSoFar
+                if (m_indexReachedSoFar != -1)
+                {
+                    m_indexReachedSoFar = (m_indexReachedSoFar < m_imageNumberInIndex ? m_imageNumberInIndex : m_indexReachedSoFar);
+                }
+
                 //改变 imageNumberBlock 中的内容
                 this.ImageNumberBlock.Text = m_imageNumberInString;
 
-                //更改rectify_process.txt中的进度到下一张 (实际上是每隔两张处理一次) 要处理的图片
-                WriteRectifyHistory(m_imageNumberInIndex);
-                
                 //到下一次的任务
                 WashDisplayingCanvas(m_imageNumberInIndex);
             }
-        }
-
-        /// <summary>
-        /// Write bounding boxes of m_AllBoxesInVideo[index] into person_xx.txt
-        /// </summary>
-        /// <param name="index">Current frame's index</param>
-        private void WritingBboxesInPersonTxt(int index)
-        {
-            foreach (BoundingBox box in m_AllBoxesInVideo[index])
+            //previous button 是否可按, 未验证此条判断式 是否 完全正确
+            if (m_imageNumberInIndex - 2 >= m_firstIndexWorkThisTime)
             {
-                using (StreamWriter confirmBoxStreamWriter = new StreamWriter(m_peopleTxtFiles[box.m_personId - 1], true, Encoding.UTF8))
-                {
-                    //注意: 这里修正了以前 矩形宽高存储的时候没有 resize 到 1920 x 1080 的区域的缺陷
-                    confirmBoxStreamWriter.WriteLine(String.Format("{0}, {1} {2} {3} {4}", index + 1, box.rectangle.m_topLeftPoint.X,
-                        box.rectangle.m_topLeftPoint.Y, box.rectangle.width / m_actualToDisplayRate, box.rectangle.height / m_actualToDisplayRate));
-                }
+                previousButton.IsEnabled = true;
             }
         }
 
-        /// <summary>
-        /// After user has finished the rectification work
-        /// </summary>
-        private void rectifyAccomplished()
+        private void previousButton_Click(object sender, RoutedEventArgs e)
         {
-            saveAndNextButton.IsEnabled = false;
-            DeleteButton.IsEnabled = false;
-            AppendButton.IsEnabled = false;
-            testBlock.Text = "Rectification task is finished !";
-            WriteRectifyHistory(-1);
+            //减少 imageNumber (int 和 string)
+            m_imageNumberInIndex -= 2;
+            m_imageNumberInString = m_imageFiles[m_imageNumberInIndex].Substring(m_imageNumberBeginIndex, 5);
+
+            //改变 imageNumberBlock 中的内容
+            this.ImageNumberBlock.Text = m_imageNumberInString;
+
+            //到上一次的任务
+            WashDisplayingCanvas(m_imageNumberInIndex);
+
+            //已经到本次窗口任务能改变的第一帧了，就设置 previous button 不可按
+            if(m_imageNumberInIndex <= m_firstIndexWorkThisTime)
+            {
+                previousButton.IsEnabled = false;
+            }
+
+            //设置 next button 可按
+            nextButton.IsEnabled = true;
         }
 
         /// <summary>
-        /// Copy bounding boxes of m_AllBoxesInVideo[index] into m_AllBoxesInVideo[index+1]
+        /// 通知用户已经标过最后一帧, 此时仍然可以编辑不满意的一些帧(上一次关闭程序(如果是在本video的话)的后两帧到最后一帧), 但是关闭程序后将不能再编辑本 video 的任何帧 
         /// </summary>
-        /// <param name="index">Current frame's index</param>
-        private void CopyBboxesToNextFrame(int index)
+        private void currentVideoIsFinishing()
         {
-            m_AllBoxesInVideo[index + 1] = m_AllBoxesInVideo[index];
+            testBlock.Text = "已经标过最后一帧, 此时仍然可以编辑不满意的一些帧(上一次关闭程序(如果是在本video的话)的后两帧到最后一帧), 但是关闭程序后将不能再编辑本 video 的任何帧";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+        private void CopyBboxes(int fromIndex, int toIndex)
+        { 
+            m_AllBoxesInVideo[toIndex] = m_AllBoxesInVideo[fromIndex];
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 窗口关闭时的任务: 
+        /// 1. 将 m_AllBoxesInVideo 存储到 BBoxes.txt 中; 
+        /// 2. 写入标框进度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            //打开程序, 然后直接关闭窗口时, m_BoundingBoxesTxtPath 由于还是空字符串, 会引发空路径名的 System.ArgumentException. 因此做异常处理如下
+            try
+            {
+                //将 m_AllBoxesInVideo 存储到 boundingboxes(new).txt 中
+                using (StreamWriter currentBoundingBoxesWriter = new StreamWriter(m_BoundingBoxesTxtPath, false, Encoding.UTF8))
+                {
+                    for (int i = 0; i < m_totalImgCnt; ++i)
+                    {
+                        String frameNumber = m_imageFiles[i].Substring(m_imageNumberBeginIndex, 5);
+                        foreach (BoundingBox box in m_AllBoxesInVideo[i])
+                        {
+                            String info = String.Format("{0} {1} {2} {3} {4} {5}",
+                                frameNumber, box.m_personId, box.rectangle.m_topLeftPoint.X, box.rectangle.m_topLeftPoint.Y, box.rectangle.width, box.rectangle.height);
+                            currentBoundingBoxesWriter.WriteLine(info);
+                        }
+                    }
+                }
 
+                //写回校正记录
+                WriteRectifyHistory(m_indexReachedSoFar);
+            }
+            catch (ArgumentException)
+            { 
+            }
         }
-
-        
     }
 }

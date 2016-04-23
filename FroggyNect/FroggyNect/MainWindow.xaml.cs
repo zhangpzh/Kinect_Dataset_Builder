@@ -411,7 +411,23 @@ namespace FroggyNect
             try
             {
                 m_DepthFrameReader.FrameArrived += this.Depth_ShowImage;
-                this.depthCheckBox.IsEnabled = false;
+            }
+            catch (System.NullReferenceException)
+            { }
+        }
+
+        /// <summary>
+        /// Stop showing depth
+        /// </summary>
+        /// <param name="sender">object sending the event</param>
+        /// <param name="e">event arguments</param>
+        private void depthCheckBox_UnChecked(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Just for test !");
+            try
+            {
+                m_DepthFrameReader.FrameArrived -= this.Depth_ShowImage;
+                //this.Dispatcher.BeginInvokeShutdown(DispatcherPriority.);
             }
             catch (System.NullReferenceException)
             { }
@@ -427,9 +443,23 @@ namespace FroggyNect
             try
             {
                 m_ColorFrameReader.FrameArrived += this.Color_ShowImage;
-                this.colorCheckBox.IsEnabled = false;
             }
             catch(System.NullReferenceException)
+            { }
+        }
+
+        /// <summary>
+        /// Stop showing color
+        /// </summary>
+        /// <param name="sender">object sending the event</param>
+        /// <param name="e">event arguments</param>
+        private void colorCheckBox_UnChecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                m_ColorFrameReader.FrameArrived -= this.Color_ShowImage;
+            }
+            catch (System.NullReferenceException)
             { }
         }
 
@@ -443,11 +473,24 @@ namespace FroggyNect
             try
             {
                 m_BodyFrameReader.FrameArrived += this.Skeleton_ShowImage;
-                this.skeletonCheckBox.IsEnabled = false;
             }
             catch(System.NullReferenceException)
             { }
         }
 
+        /// <summary>
+        /// Stop showing skeleton
+        /// </summary>
+        /// <param name="sender">object sending the event</param>
+        /// <param name="e">event arguments</param>
+        private void skeletonCheckBox_UnChecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                m_BodyFrameReader.FrameArrived -= this.Skeleton_ShowImage;
+            }
+            catch (System.NullReferenceException)
+            { }
+        }
     }
 }

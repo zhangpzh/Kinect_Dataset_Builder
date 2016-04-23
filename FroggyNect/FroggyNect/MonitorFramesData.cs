@@ -204,8 +204,6 @@ namespace FroggyNect
                 (Action)
                 (() => this.RenderColorImage(ref this.colorBitmap, this.colorImage, e))
                 );
-
-            
         }
 
         /// <summary>
@@ -215,6 +213,7 @@ namespace FroggyNect
         /// <param name="e">event arguments</param>
         private void Depth_ShowImage(Object sender, DepthFrameArrivedEventArgs e)
         {
+            Console.WriteLine("Just for test !");
             this.Dispatcher.BeginInvoke(
                 (Action)
                 (() => this.RenderDepthImage(ref this.depthBitmap, this.depthImage, e))

@@ -1,0 +1,5 @@
+C:\Users\PEIZHENZHANG\Desktop\original_dataset	C:\Users\PEIZHENZHANG\Desktop\current_dataset
+3		view_left		view_middle	view_right
+video01	video01	2-180		50-250		23-230
+video01	video02	181-600		251-648		231-620
+video02	video02	77-199		90-210		130-240

@@ -1,3 +1,0 @@
-RegisterColorAndDepth -> 获得对齐参数
-resizeBoundingBox -> 将 bounding box resize 到统一的分辨率中 (需要对齐参数)
-RGB和D对齐 -> 将分辨率不同的 rgb 和 depth 帧 对齐到同一分辨率 (需要对齐参数)

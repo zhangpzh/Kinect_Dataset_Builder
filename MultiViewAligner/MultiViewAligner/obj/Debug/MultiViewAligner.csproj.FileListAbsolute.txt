@@ -1,0 +1,9 @@
+c:\users\zhang\documents\visual studio 2013\Projects\MultiViewAligner\MultiViewAligner\bin\Debug\MultiViewAligner.exe.config
+c:\users\zhang\documents\visual studio 2013\Projects\MultiViewAligner\MultiViewAligner\obj\Debug\MultiViewAligner.csprojResolveAssemblyReference.cache
+c:\users\zhang\documents\visual studio 2013\Projects\MultiViewAligner\MultiViewAligner\bin\Debug\MultiViewAligner.exe
+c:\users\zhang\documents\visual studio 2013\Projects\MultiViewAligner\MultiViewAligner\bin\Debug\MultiViewAligner.pdb
+c:\users\zhang\documents\visual studio 2013\Projects\MultiViewAligner\MultiViewAligner\obj\Debug\MultiViewAligner.exe
+c:\users\zhang\documents\visual studio 2013\Projects\MultiViewAligner\MultiViewAligner\obj\Debug\MultiViewAligner.pdb
+C:\Users\PEIZHENZHANG\Documents\GitHub\MultiView_Synchronizer\MultiViewAligner\bin\Debug\MultiViewAligner.exe.config
+C:\Users\PEIZHENZHANG\Documents\GitHub\MultiView_Synchronizer\MultiViewAligner\obj\Debug\MultiViewAligner.exe
+C:\Users\PEIZHENZHANG\Documents\GitHub\MultiView_Synchronizer\MultiViewAligner\obj\Debug\MultiViewAligner.pdb

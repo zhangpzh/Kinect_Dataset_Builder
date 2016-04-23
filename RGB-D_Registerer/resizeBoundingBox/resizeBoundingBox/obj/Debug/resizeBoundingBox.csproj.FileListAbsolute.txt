@@ -1,6 +1,0 @@
-c:\users\zhang\documents\visual studio 2013\Projects\resizeBoundingBox\resizeBoundingBox\bin\Debug\resizeBoundingBox.exe.config
-c:\users\zhang\documents\visual studio 2013\Projects\resizeBoundingBox\resizeBoundingBox\obj\Debug\resizeBoundingBox.csprojResolveAssemblyReference.cache
-c:\users\zhang\documents\visual studio 2013\Projects\resizeBoundingBox\resizeBoundingBox\bin\Debug\resizeBoundingBox.exe
-c:\users\zhang\documents\visual studio 2013\Projects\resizeBoundingBox\resizeBoundingBox\bin\Debug\resizeBoundingBox.pdb
-c:\users\zhang\documents\visual studio 2013\Projects\resizeBoundingBox\resizeBoundingBox\obj\Debug\resizeBoundingBox.exe
-c:\users\zhang\documents\visual studio 2013\Projects\resizeBoundingBox\resizeBoundingBox\obj\Debug\resizeBoundingBox.pdb

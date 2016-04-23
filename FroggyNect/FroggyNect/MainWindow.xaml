@@ -42,7 +42,7 @@
         <TextBlock Name="floorTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="237,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="251"/>
         <TextBlock Name="datasetRootTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="237,466,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="251" Height="17" RenderTransformOrigin="0.478,1.2" FontSize="11"/>
         <Border Name="videoTextBoxBorder" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="537,454,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.4,1.645" IsEnabled="False"/>
-        <CheckBox Name="depthCheckBox"  Checked="depthCheckBox_Checked" Content="" HorizontalAlignment="Left" Margin="204,355,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <CheckBox Name="depthCheckBox"  Checked="depthCheckBox_Checked" Unchecked="depthCheckBox_UnChecked" Content="" HorizontalAlignment="Left" Margin="204,355,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <CheckBox Name="colorCheckBox"  Checked="colorCheckBox_Checked" Content="" HorizontalAlignment="Left" Margin="351,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.85,0.333" Grid.Column="1"/>
         <CheckBox Name="skeletonCheckBox"  Checked="skeletonCheckBox_Checked" Content="" HorizontalAlignment="Left" Margin="55,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.85,0.333" Grid.Column="3"/>
     </Grid>
