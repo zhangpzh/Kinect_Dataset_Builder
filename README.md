@@ -29,7 +29,9 @@ FroggyNect，the Kinect Recorder, is enable to reach the following goals:
 
 You guys are sure to record data streams from Kinect sensor(s) meanwhile open the monitor to have a peek at what you are recording. The written fps of the images is displayed on the main UI of FroggyNect. It’s recommended that you use SSD and faster processor(s) in order to lose as little information as possible.
 Figure 2 shows the user interface of FroggyNect. 
-![Figure-2](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-2.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-2.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-2 </div>
 Figure 3 shows a screenshot of the application while recording and monitoring information from a Kinect sensor.
 <div  align="center">  Figure-3 </div>
@@ -39,7 +41,9 @@ Figure 3 shows a screenshot of the application while recording and monitoring in
 #### 2.	MultiViewAligner
 If you have collected multiple views of videos by using several Kinect sensors with each connected with an instinct computer, you are supposed to use our MultiViewAligner to synchronize these views. All you have to do is to offer it a configuration text file. The contents of a sample configuration text file are listed in Figure 4:
 
-![Figure-4](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-4.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-4.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-4 </div>
 
 There are original multi-view dataset directory and the new multi-view dataset directory presenting at the first line.
@@ -55,13 +59,17 @@ We use “GetRegisParams” to acquire the scale ratio of RGB to depth images an
 
 Our experiments demonstrate that these parameters differ from views and we’d better calculate each combination of parameters for each view. Besides, it’s a good way to input as many pairs of skeleton records within the same view as possible to improve the accuracy upon the estimation of the parameters of a view. This data we need is listed in Figure 5.
 
-![Figure-5](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-5.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-5.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-5 </div>
 
 The records in Figure 5 are from a “SkeletonInfo.txt” under a video of a view.
 After that, we get a text containing parameters like what is displaying in Figure 6.
 
-![Figure-6](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-6.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-6.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-6 </div>
 
 Then start our program “RegisProgs”, and it will read the text and registrate images. But before that you have to modify the paths (the absolute paths of the dataset and the parameter text) in the source codes manually. 
@@ -72,30 +80,42 @@ Then start our program “RegisProgs”, and it will read the text and registrat
 #### 4. BoundingBoxer
 You can draw bounding boxes of people who appear in the RGB images in a selected video with the help of BoundingBoxer. Start the program, and you will see six buttons on the window.
 
-![Figure-7](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-7.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-7.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-7 </div>
 
 Click “Browse” button when you want to select a video to draw bounding boxes. In Figure 8, we select video95. Press enter key then we get Figure 9.
 
-![Figure-8](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-8.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-8.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-8 </div>
 
-![Figure-9](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-9.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-9.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-9 </div>
 
 Before we start drawing bounding boxes, we have to know that BoundingBoxer will copy the bounding boxes of current image to the next one. And after clicking “Next” button, the program will jump to the next image of the next image of current image. That is to say, the incrementing number is 2. This is because Kinect sensor can receive at most 30 frames a second, which causes the situation that too many images are waiting to be annotated, and usually the tiny difference between two consecutive images can be ignored. However, if you are patient enough to draw bounding boxes for each frame, you can easily modify the source codes.
 
 Click the Append button, then we enter the append mode. In this mode, when you click the canvas twice, a rectangle (bounding box) will be drawn according to the two points captured by our program. You will be asked to input the person id as soon as the rectangle is drawn. And after a valid person id is given, a bounding box will display with the person’s name and id in case of our carelessness. You are free to draw whatever number of bounding boxes you want just like figure 10 shows until you click the “Cancel” button.
 
-![Figure-10](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-10.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-10.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-10 </div>
 
 If you are not satisfied with your boxes and want to eliminate some of them, you just need to click the “Cancel” button then the “Delete” button to enter the delete mode. Then just move your mouse inside a rectangle off which you want to get rid. The borders of the boxes containing the mouse will turn their color into red. Simply left click the mouse, then the boxes with red borders will disappear. Figure 11 and 12 show an example.
 
-![Figure-11](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-11.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-11.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-11 </div>
 
-![Figure-12](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-12.png)
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-12.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-12 </div>
 
 If you have finished annotating current frame (also the next one’s too), you can click “Next” button to enter the next image with which you are going to work. Any time, you are free to click “Previous” button to check the previous images up, regret and modify them.
