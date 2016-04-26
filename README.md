@@ -81,19 +81,19 @@ Then start our program “RegisProgs”, and it will read the text and registrat
 You can draw bounding boxes of people who appear in the RGB images in a selected video with the help of BoundingBoxer. Start the program, and you will see six buttons on the window.
 
 <div  align="center">
-<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-7.png" width = "800" alt="图片名称" align=center />
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-7.png" width = "650" alt="图片名称" align=center />
 </div>
 <div  align="center">  Figure-7 </div>
 
 Click “Browse” button when you want to select a video to draw bounding boxes. In Figure 8, we select video95. Press enter key then we get Figure 9.
 
 <div  align="center">
-<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-8.png" width = "800" alt="图片名称" align=center />
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-8.png" width = "650" alt="图片名称" align=center />
 </div>
 <div  align="center">  Figure-8 </div>
 
 <div  align="center">
-<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-9.png" width = "800" alt="图片名称" align=center />
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-9.png" width = "650" alt="图片名称" align=center />
 </div>
 <div  align="center">  Figure-9 </div>
 
@@ -102,19 +102,19 @@ Before we start drawing bounding boxes, we have to know that BoundingBoxer will 
 Click the Append button, then we enter the append mode. In this mode, when you click the canvas twice, a rectangle (bounding box) will be drawn according to the two points captured by our program. You will be asked to input the person id as soon as the rectangle is drawn. And after a valid person id is given, a bounding box will display with the person’s name and id in case of our carelessness. You are free to draw whatever number of bounding boxes you want just like figure 10 shows until you click the “Cancel” button.
 
 <div  align="center">
-<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-10.png" width = "800" alt="图片名称" align=center />
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-10.png" width = "650" alt="图片名称" align=center />
 </div>
 <div  align="center">  Figure-10 </div>
 
 If you are not satisfied with your boxes and want to eliminate some of them, you just need to click the “Cancel” button then the “Delete” button to enter the delete mode. Then just move your mouse inside a rectangle off which you want to get rid. The borders of the boxes containing the mouse will turn their color into red. Simply left click the mouse, then the boxes with red borders will disappear. Figure 11 and 12 show an example.
 
 <div  align="center">
-<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-11.png" width = "800" alt="图片名称" align=center />
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-11.png" width = "650" alt="图片名称" align=center />
 </div>
 <div  align="center">  Figure-11 </div>
 
 <div  align="center">
-<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-12.png" width = "800" alt="图片名称" align=center />
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-12.png" width = "650" alt="图片名称" align=center />
 </div>
 <div  align="center">  Figure-12 </div>
 
