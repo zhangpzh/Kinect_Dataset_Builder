@@ -13,3 +13,6 @@ c:\users\peizhenzhang\documents\visual studio 2013\Projects\GetRegisParams\GetRe
 c:\users\peizhenzhang\documents\visual studio 2013\Projects\GetRegisParams\GetRegisParams\obj\Debug\GetRegisParams.csproj.GenerateResource.Cache
 c:\users\peizhenzhang\documents\visual studio 2013\Projects\GetRegisParams\GetRegisParams\obj\Debug\GetRegisParams.exe
 c:\users\peizhenzhang\documents\visual studio 2013\Projects\GetRegisParams\GetRegisParams\obj\Debug\GetRegisParams.pdb
+C:\Users\PEIZHENZHANG\Documents\GitHub\ImagesRegistrater\GetRegisParams\GetRegisParams\bin\Debug\GetRegisParams.exe.config
+C:\Users\PEIZHENZHANG\Documents\GitHub\ImagesRegistrater\GetRegisParams\GetRegisParams\obj\Debug\GetRegisParams.exe
+C:\Users\PEIZHENZHANG\Documents\GitHub\ImagesRegistrater\GetRegisParams\GetRegisParams\obj\Debug\GetRegisParams.pdb

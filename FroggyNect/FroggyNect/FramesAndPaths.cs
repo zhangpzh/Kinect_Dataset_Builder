@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="FramesAndPaths.cs" Lab="isee" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+// <copyright file="FramesAndPaths.cs" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
 //     Copyright (c) Peizhen Zhang.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------

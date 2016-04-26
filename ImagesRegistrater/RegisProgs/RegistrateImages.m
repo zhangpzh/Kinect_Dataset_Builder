@@ -1,3 +1,8 @@
+%------------------------------------------------------------------------------
+% <copyright file="RegistrateImages.m" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+%     Copyright (c) Peizhen Zhang.  All rights reserved.
+% </copyright>
+%------------------------------------------------------------------------------
 function RegistrateImages(rootPthOfVideos)
 % Reading parameters from 'rootPthOfVideos\registerParams.txt'
 regisPrmTxtPth = fullfile(rootPthOfVideos,'registerParams.txt');

@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="MonitorFramesData.cs" Lab="isee" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+// <copyright file="MonitorFramesData.cs" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
 //     Copyright (c) Peizhen Zhang.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------

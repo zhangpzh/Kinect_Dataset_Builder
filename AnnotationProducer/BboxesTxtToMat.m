@@ -1,3 +1,8 @@
+%------------------------------------------------------------------------------
+% <copyright file="BboxesTxtToMat.m" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+%     Copyright (c) Peizhen Zhang.  All rights reserved.
+% </copyright>
+%------------------------------------------------------------------------------
 viewNames= {'view01','view02','view03'};
 basicPth = 'I:\kinect-dataset(multi-view for activity)';
 b=size(viewNames);

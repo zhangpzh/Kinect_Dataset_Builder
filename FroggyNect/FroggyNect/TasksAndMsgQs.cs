@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="TasksAndMsgQs.cs" Lab="isee" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+// <copyright file="TasksAndMsgQs.cs" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
 //     Copyright (c) Peizhen Zhang.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------

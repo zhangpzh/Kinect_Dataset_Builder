@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" Lab="isee" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+// <copyright file="MainWindow.xaml.cs" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
 //     Copyright (c) Peizhen Zhang.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------

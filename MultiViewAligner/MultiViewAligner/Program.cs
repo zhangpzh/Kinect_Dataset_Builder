@@ -1,4 +1,10 @@
-﻿//This program is used to align image files among multiple views in which photos are from multiple kinects respectively
+﻿//------------------------------------------------------------------------------
+// <copyright file="Program.cs" author="Peizhen Zhang" email="peizhenzhang73@gmail.com">
+//     Copyright (c) Peizhen Zhang.  All rights reserved.
+// </copyright>
+//------------------------------------------------------------------------------
+
+//This program is used to align image files among multiple views in which photos are from multiple kinects respectively
 
 using System;
 using System.Collections.Generic;
