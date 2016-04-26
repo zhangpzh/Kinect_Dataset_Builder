@@ -1,5 +1,5 @@
 #Kinect\_Dataset\_Builder
->Kinect\_Dataset\_Builder is a repository containing a series of programs for constructing a Kinect video dataset or Kinect multi-view video dataset with Kinect sensor 2.0. The term “multi-view” means setting several sensors around a scene where activities or any other things else happen. Figure 1 shows three RGB images belonging to three views in a Kinect multi-view dataset at a moment.
+>   Kinect\_Dataset\_Builder is a repository containing a series of programs for constructing a Kinect video dataset or Kinect multi-view video dataset with Kinect sensor 2.0. The term “multi-view” means setting several sensors around a scene where activities or any other things else happen. Figure 1 shows three RGB images belonging to three views in a Kinect multi-view dataset at a moment.
 ![Figure-1](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-1.png)
 $$Figure1$$
 
