@@ -27,9 +27,9 @@ FroggyNect，the Kinect Recorder, is enable to reach the following goals:
 You guys are sure to record data streams from Kinect sensor(s) meanwhile open the monitor to have a peek at what you are recording. The written fps of the images is displayed on the main UI of FroggyNect. It’s recommended that you use SSD and faster processor(s) in order to lose as little information as possible.
 Figure 2 shows the user interface of FroggyNect. 
 ![Figure-2](https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-2.png)
-$$Figure2$$
+<div  align="center">  Figure1 </div>
 Figure 3 shows a screenshot of the application while recording and monitoring information from a Kinect sensor.
-$$Figure3$$
+$$ Figure3 $$
 
 ---
 
