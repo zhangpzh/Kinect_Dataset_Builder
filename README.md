@@ -35,6 +35,9 @@ Figure 2 shows the user interface of FroggyNect.
 <div  align="center">  Figure-2 </div>
 </br>
 Figure 3 shows a screenshot of the application while recording and monitoring information from a Kinect sensor.
+<div  align="center">
+<img src="https://github.com/zhangpzh/Kinect_Dataset_Builder/raw/master/mdImages/Figure-3.png" width = "800" alt="图片名称" align=center />
+</div>
 <div  align="center">  Figure-3 </div>
 </br>
 ---
